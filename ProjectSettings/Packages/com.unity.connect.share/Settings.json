@@ -21,7 +21,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"E:/Portfolio Projects/Clicky-Cubes/Latest Build;E:/Portfolio Projects/Clicky-Cubes/WebGL Build;E:/Portfolio Projects/Clicky-Cubes/Itch.io;E:/Unity Junior Course/The Cube Challenge/New folder;E:/Unity Junior Course/The Cube Challenge/WebGL Builds;;;;;\"}"
+                "value": "{\"m_Value\":\"D:/WebGL Builds/Clicky Crates;E:/Portfolio Projects/Clicky-Cubes/Latest Build;E:/Portfolio Projects/Clicky-Cubes/WebGL Build;E:/Portfolio Projects/Clicky-Cubes/Itch.io;E:/Unity Junior Course/The Cube Challenge/New folder;E:/Unity Junior Course/The Cube Challenge/WebGL Builds;;;;\"}"
             }
         ]
     }
