@@ -4,7 +4,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEditor;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,6 +31,8 @@ public class GameManager : MonoBehaviour
 	int startingHeart = 3;
 	int currentScore;
 	
+	[SerializeField] private SceneTransition sceneTransition;
+	[SerializeField] private AudioSource gameOverSFX;
 	
 	// States of Game
 	[HideInInspector] public bool isGameActive = true;
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
 	}
 	public void StartGame(float difficulty)
 	{
+		sceneTransition.Fade();
 		// Activate UI Elements
 		gameMenu.SetActive(true);
 		isGameActive = true;
@@ -54,6 +56,7 @@ public class GameManager : MonoBehaviour
 		
 		// Start spawning Objects
 		StartCoroutine(SpawnTargets());
+		
 		
 		// Reset game variables
 		currentHeart = startingHeart;
@@ -74,7 +77,8 @@ public class GameManager : MonoBehaviour
 
     
 	IEnumerator SpawnTargets()
-    {
+	{
+		yield return new WaitForSeconds(1f);
 	    while(isGameActive)
 	    {
 	    	yield return new WaitForSeconds(spawnRate);
@@ -148,8 +152,12 @@ public class GameManager : MonoBehaviour
 
 	public void GameOver()
 	{
+		gameOverSFX.Play();
+		Time.timeScale = 0f;
 		isGameActive = false;
+		sceneTransition.Fade();
 		gameOver.SetActive(true);
+		
 		GameObject childToDisable =  GameObject.FindGameObjectWithTag("Paused Btn"); 
 		childToDisable.gameObject.SetActive(false);
 		BackGroundMusic.SetActive(false);
@@ -160,6 +168,7 @@ public class GameManager : MonoBehaviour
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		BackGroundMusic.SetActive(true);
+		Time.timeScale = 1f;
 	}
 	
 	

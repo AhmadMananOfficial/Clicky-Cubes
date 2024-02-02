@@ -6,14 +6,15 @@ using UnityEngine;
 [RequireComponent(typeof(TrailRenderer), typeof(BoxCollider) )]
 public class ClickAndSwip : MonoBehaviour
 {
-	Camera _camera;
-	TrailRenderer trailRenderer;
-	BoxCollider boxCollider; 
-	GameManager gameManager;
+	private Camera _camera;
+	private TrailRenderer trailRenderer;
+	private BoxCollider boxCollider; 
+	private GameManager gameManager;
 	
-	Vector3 mousePosition;
+	private Vector3 mousePosition;
+	private bool swiping;
 	
-	bool swiping;
+	[SerializeField] private AudioSource knifeSFX;
 	
 	void Awake()
 	{
@@ -74,6 +75,7 @@ public class ClickAndSwip : MonoBehaviour
 		if(collision.gameObject.GetComponent<Target>())
 		{
 			collision.gameObject.GetComponent<Target>().DestroyTarget();
+			knifeSFX.Play();
 		}
 		if(collision.gameObject.CompareTag("Enemy") && gameManager.isGameActive)
 		{

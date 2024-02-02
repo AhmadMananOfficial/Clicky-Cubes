@@ -21,7 +21,7 @@ public class OptionManager : MonoBehaviour
 	void Awake()
 	{
 		// Load saved volume value
-		float savedVolume = PlayerPrefs.GetFloat(volumePrefKey, 0.5f); // Default to 0.5 if not saved
+		float savedVolume = PlayerPrefs.GetFloat(volumePrefKey, 0.4f); // Default to 0.5 if not saved
 		volumeSlider.value = savedVolume;
 		musicSource.volume = savedVolume;
 
@@ -29,7 +29,7 @@ public class OptionManager : MonoBehaviour
 		UpdateVolumeValue();
 		
 		// Load saved quality level
-		int savedQuality = PlayerPrefs.GetInt(qualityPrefKey, 1); // Default to medium (1)
+		int savedQuality = PlayerPrefs.GetInt(qualityPrefKey, 3); // Default to medium (1)
 		qualityDropdown.value = savedQuality;
 		QualitySettings.SetQualityLevel(savedQuality);
 	}
